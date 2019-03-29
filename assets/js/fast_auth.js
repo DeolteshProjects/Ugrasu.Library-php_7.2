@@ -34,3 +34,16 @@ function fastLibraryAuth() {
         }
     });
 }
+
+
+//Авторизация как библиотека
+function fastLogout() {
+    $.ajax({
+        type: 'POST',
+        url: 'system/modules/fast_auth.php',
+        data: 'access=O',
+        success: function (data) {
+            window.location.replace('index.php');
+        }
+    });
+}

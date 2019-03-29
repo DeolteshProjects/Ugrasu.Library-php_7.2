@@ -14,6 +14,10 @@ if (!empty($_POST['access'])) {
             $_SESSION['access'] = "Библиотека";
             $_SESSION['username'] = "Работник библиотеки";
             break;
+        case "O":
+            $_SESSION['access'] = "";
+            session_destroy();
+            break;
         default:
             exit();
     }

@@ -1,11 +1,45 @@
 <?php
 session_start();
-if (!isset($_SESSION['access'])) header('Location: login.php');
+if (!isset($_POST['submit'])) {
+    header('Location: searchBook.php');
+} else {
+    require('system/classes/class.irbis64_debug.php');
+    require('system/classes/class.parser.php');
+    $Irbis = new irbis64();
+    $Parser = new ItMyParser();
+    //Попытка авторизации
+    $login = $Irbis->login();
+
+    if ($login) {
+        if (isset($_POST["submit"])) {
+            (!empty($_POST["bookAuthor"])) ? $Author = $_POST['bookAuthor'] : $Author = null;
+            (!empty($_POST["bookTitle"])) ? $Title = $_POST['bookTitle'] : $Title = null;
+            (!empty($_POST["bootKeyWord"])) ? $WordKey = $_POST['bootKeyWord'] : $WordKey = null;
+            (!empty($_POST["bootLimit"])) ? $Limit = $_POST['bootLimit'] : $Limit = 1;
+            (!empty($_POST["DataBase"])) ? $DataBase = $_POST['DataBase'] : $DataBase = null;
+        }
+        $Irbis->set_db($DataBase);
+        $query = $Irbis->getQuery($Author, $Title, $WordKey);
+        $result = $Irbis->recordsSearch($query, $Limit, 1, "@");
+        count($result['records']);
+        if (count($result['records']) > 0) {
+            if (count($result['records'])>$Limit) {
+                for ($i = 1; $i<=$Limit; $i++) {
+                    $Answer[$i] = $Parser->getSmallParse($result['records'][$i]);
+                }
+            } else {
+                for ($i = 1; $i<=count($result['records']); $i++) {
+                    $Answer[$i] = $Parser->getSmallParse($result['records'][$i]);
+                }
+            }
+            $Limit = count($Answer);
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -57,16 +91,16 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
                     <!-- Logo icon --><b>
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
-                        <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                        <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo"/>
                         <!-- Light Logo icon -->
-                        <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                        <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo"/>
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text --><span>
                          <!-- dark Logo text -->
-                         <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                         <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo"/>
                         <!-- Light Logo text -->
-                         <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
+                         <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage"/></span> </a>
             </div>
             <!-- ============================================================== -->
             <!-- End Logo -->
@@ -77,8 +111,10 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
                 <!-- ============================================================== -->
                 <ul class="navbar-nav mr-auto">
                     <!-- This is  -->
-                    <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="sl-icon-menu"></i></a> </li>
-                    <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="sl-icon-menu"></i></a> </li>
+                    <li class="nav-item"><a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark"
+                                            href="javascript:void(0)"><i class="sl-icon-menu"></i></a></li>
+                    <li class="nav-item"><a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark"
+                                            href="javascript:void(0)"><i class="sl-icon-menu"></i></a></li>
                     <!-- ============================================================== -->
                 </ul>
                 <!-- ============================================================== -->
@@ -89,8 +125,9 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
                     <!-- Comment -->
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="icon-Bell"></i>
-                            <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false"> <i class="icon-Bell"></i>
+                            <div class="notify"><span class="heartbit"></span> <span class="point"></span></div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown">
                             <ul>
@@ -103,12 +140,14 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
                                         <a href="#">
                                             <div class="btn btn-success btn-circle"><i class="fa fa-book"></i></div>
                                             <div class="mail-contnet">
-                                                <h5>Библиотека</h5> <span class="mail-desc">Ваша библиотечная справка была принята!</span> <span class="time">9:30 AM</span> </div>
+                                                <h5>Библиотека</h5> <span class="mail-desc">Ваша библиотечная справка была принята!</span>
+                                                <span class="time">9:30 AM</span></div>
                                         </a>
                                     </div>
                                 </li>
                                 <li>
-                                    <a class="nav-link text-center" href="javascript:void(0);"> <strong>Показать все уведомления</strong> <i class="fa fa-angle-right"></i> </a>
+                                    <a class="nav-link text-center" href="javascript:void(0);"> <strong>Показать все
+                                            уведомления</strong> <i class="fa fa-angle-right"></i> </a>
                                 </li>
                             </ul>
                         </div>
@@ -120,10 +159,12 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
                     <!-- Messages -->
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="icon-Mail"></i>
-                            <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="icon-Mail"></i>
+                            <div class="notify"><span class="heartbit"></span> <span class="point"></span></div>
                         </a>
-                        <div class="dropdown-menu mailbox dropdown-menu-right animated bounceInDown" aria-labelledby="2">
+                        <div class="dropdown-menu mailbox dropdown-menu-right animated bounceInDown"
+                             aria-labelledby="2">
                             <ul>
                                 <li>
                                     <div class="drop-title">У вас новые сообщения</div>
@@ -132,14 +173,19 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
                                     <div class="message-center">
                                         <!-- Message -->
                                         <a href="#">
-                                            <div class="user-img"> <img src="assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                            <div class="user-img"><img src="assets/images/users/1.jpg" alt="user"
+                                                                       class="img-circle"> <span
+                                                        class="profile-status online pull-right"></span></div>
                                             <div class="mail-contnet">
-                                                <h5>Пупкин Иван</h5> <span class="mail-desc">Вроде пока не рабоатает!</span> <span class="time">9:30</span> </div>
+                                                <h5>Пупкин Иван</h5> <span
+                                                        class="mail-desc">Вроде пока не рабоатает!</span> <span
+                                                        class="time">9:30</span></div>
                                         </a>
                                     </div>
                                 </li>
                                 <li>
-                                    <a class="nav-link text-center" href="javascript:void(0);"> <strong>Показать все сообщения</strong> <i class="fa fa-angle-right"></i> </a>
+                                    <a class="nav-link text-center" href="javascript:void(0);"> <strong>Показать все
+                                            сообщения</strong> <i class="fa fa-angle-right"></i> </a>
                                 </li>
                             </ul>
                         </div>
@@ -152,18 +198,26 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
                     <!-- Profile -->
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown u-pro">
-                        <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="" /> <span class="hidden-md-down"><?=$_SESSION['username']?> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href=""
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
+                                    src="assets/images/users/1.jpg" alt="user" class=""/> <span
+                                    class="hidden-md-down"><?= $_SESSION['username'] ?> &nbsp;<i
+                                        class="fa fa-angle-down"></i></span> </a>
                         <div class="dropdown-menu dropdown-menu-right animated flipInY">
                             <ul class="dropdown-user">
                                 <li>
                                     <div class="dw-user-box">
                                         <div class="u-img"><img src="assets/images/users/1.jpg" alt="user"></div>
                                         <div class="u-text">
-                                            <h4><?=$_SESSION['username']?></h4>
-                                            <p class="text-muted"><?=$_SESSION['access']?></p></div>
+                                            <h4><?= $_SESSION['username'] ?></h4>
+                                            <p class="text-muted"><?= $_SESSION['access'] ?></p></div>
                                     </div>
                                 </li>
-                                <li><button class="btn btn-block btn-outline-info" onclick="fastLogout()"><i class="fa fa-power-off"></i> Выйти</button></li>
+                                <li>
+                                    <button class="btn btn-block btn-outline-info" onclick="fastLogout()"><i
+                                                class="fa fa-power-off"></i> Выйти
+                                    </button>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -183,10 +237,13 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
             <!-- Sidebar navigation-->
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
-                    <li> <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="icon-Car-Wheel"></i><span class="hide-menu">Главная <span class="label label-rounded label-info">{info}</span></span></a></li>
+                    <li><a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i
+                                    class="icon-Car-Wheel"></i><span class="hide-menu">Главная <span
+                                        class="label label-rounded label-info">{info}</span></span></a></li>
                 </ul>
                 <ul id="sidebarnav">
-                    <li> <a class="has-arrow waves-effect waves-dark" href="searchBook.php" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu">Поиск книг</span></a></li>
+                    <li><a class="has-arrow waves-effect waves-dark" href="searchBook.php" aria-expanded="false"><i
+                                    class="fa fa-book"></i><span class="hide-menu">Поиск книг</span></a></li>
                 </ul>
             </nav>
             <!-- End Sidebar navigation -->
@@ -216,7 +273,9 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
                     </ol>
                 </div>
                 <div class="col-md-7 align-self-center text-right d-none d-md-block">
-                    <button type="button" class="btn btn-info"><i class="fa fa-plus-circle"></i> Создать библиотечную справку</button>
+                    <button type="button" class="btn btn-info"><i class="fa fa-plus-circle"></i> Создать библиотечную
+                        справку
+                    </button>
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -229,7 +288,37 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            Это текст стартовой страницы.
+                            <h4 class="card-title">Результаты поиска по запросу "<?= $query ?>"</h4>
+                            <h6 class="card-subtitle">Найденно <?= $result['number'] ?> записей (Поиск
+                                занял <?= $result['time'] ?> секунд)</h6>
+                            <ul class="search-listing">
+                                    <?php
+                                    for ($i = 1; $i<=(count($Answer)); $i++) {
+                                        echo "<li>";
+                                        if (!empty($Answer[$i]['Author'])) echo "<p><h3>".$Answer[$i]['Author']."<b id='".$Answer[$i]['Id']."'> ".$DataBase."#".$Answer[$i]['Id']."</b></h3></p>";
+                                        else echo "<h3>Автор неизвестен</h3>";
+                                        if (!empty($Answer[$i]['SmallDescription'])) echo "<p>".$Answer[$i]['SmallDescription']."</p>";
+                                        else echo "Описание недоступно неизвестен";
+                                        echo "<p>Количество экземпляров в библиотеке: <i class='search-link'>".$Answer[$i]['NumberOfCopies']." шт.</i></p>";
+                                        echo "<button class='btn btn-primary' id='".$i."' onclick='addToReport(".$i.")'>Добавить в справку</button> ";
+                                        echo "<button class='btn btn-primary' id='".$i."' onclick='addToReport(".$i.")'>Добавить в дополнительную</button>";
+                                        echo "</li>";
+                                    }
+                                    ?>
+                            </ul>
+                            <nav aria-label="Page navigation example" class="m-t-40">
+                                <ul class="pagination">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Туда</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Сюда</a>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
@@ -246,7 +335,7 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer">
-            © <?=date("Y")?> Denis Shilenkov for VKR
+            © <?= date("Y") ?> Denis Shilenkov for VKR
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->
@@ -283,6 +372,17 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
 <script src="assets/node_modules/styleswitcher/jQuery.style.switcher.js"></script>
 
 <script src="assets/js/fast_auth.js"></script>
+<script>
+    function addToReport(id) {
+        var TOWN = '<?php echo $CITY;?>';
+        var string = '<?php echo $Answer[1]["SmallDescription"] ?>';
+        //Отключение кнопки
+        document.getElementById(id).disabled = true;
+        document.getElementById(id).hidden = true;
+        alert("Книга была добавленна в библиотечную справку");
+        alert(string);
+    }
+</script>
 </body>
 
 </html>

@@ -57,16 +57,16 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
                     <!-- Logo icon --><b>
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
-                        <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                        <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo"/>
                         <!-- Light Logo icon -->
-                        <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                        <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo"/>
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text --><span>
                          <!-- dark Logo text -->
-                         <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                         <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo"/>
                         <!-- Light Logo text -->
-                         <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
+                         <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage"/></span> </a>
             </div>
             <!-- ============================================================== -->
             <!-- End Logo -->
@@ -77,8 +77,10 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
                 <!-- ============================================================== -->
                 <ul class="navbar-nav mr-auto">
                     <!-- This is  -->
-                    <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="sl-icon-menu"></i></a> </li>
-                    <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="sl-icon-menu"></i></a> </li>
+                    <li class="nav-item"><a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark"
+                                            href="javascript:void(0)"><i class="sl-icon-menu"></i></a></li>
+                    <li class="nav-item"><a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark"
+                                            href="javascript:void(0)"><i class="sl-icon-menu"></i></a></li>
                     <!-- ============================================================== -->
                 </ul>
                 <!-- ============================================================== -->
@@ -89,8 +91,9 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
                     <!-- Comment -->
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="icon-Bell"></i>
-                            <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false"> <i class="icon-Bell"></i>
+                            <div class="notify"><span class="heartbit"></span> <span class="point"></span></div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown">
                             <ul>
@@ -103,12 +106,14 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
                                         <a href="#">
                                             <div class="btn btn-success btn-circle"><i class="fa fa-book"></i></div>
                                             <div class="mail-contnet">
-                                                <h5>Библиотека</h5> <span class="mail-desc">Ваша библиотечная справка была принята!</span> <span class="time">9:30 AM</span> </div>
+                                                <h5>Библиотека</h5> <span class="mail-desc">Ваша библиотечная справка была принята!</span>
+                                                <span class="time">9:30 AM</span></div>
                                         </a>
                                     </div>
                                 </li>
                                 <li>
-                                    <a class="nav-link text-center" href="javascript:void(0);"> <strong>Показать все уведомления</strong> <i class="fa fa-angle-right"></i> </a>
+                                    <a class="nav-link text-center" href="javascript:void(0);"> <strong>Показать все
+                                            уведомления</strong> <i class="fa fa-angle-right"></i> </a>
                                 </li>
                             </ul>
                         </div>
@@ -120,10 +125,12 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
                     <!-- Messages -->
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="icon-Mail"></i>
-                            <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="icon-Mail"></i>
+                            <div class="notify"><span class="heartbit"></span> <span class="point"></span></div>
                         </a>
-                        <div class="dropdown-menu mailbox dropdown-menu-right animated bounceInDown" aria-labelledby="2">
+                        <div class="dropdown-menu mailbox dropdown-menu-right animated bounceInDown"
+                             aria-labelledby="2">
                             <ul>
                                 <li>
                                     <div class="drop-title">У вас новые сообщения</div>
@@ -132,14 +139,19 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
                                     <div class="message-center">
                                         <!-- Message -->
                                         <a href="#">
-                                            <div class="user-img"> <img src="assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                            <div class="user-img"><img src="assets/images/users/1.jpg" alt="user"
+                                                                       class="img-circle"> <span
+                                                        class="profile-status online pull-right"></span></div>
                                             <div class="mail-contnet">
-                                                <h5>Пупкин Иван</h5> <span class="mail-desc">Вроде пока не рабоатает!</span> <span class="time">9:30</span> </div>
+                                                <h5>Пупкин Иван</h5> <span
+                                                        class="mail-desc">Вроде пока не рабоатает!</span> <span
+                                                        class="time">9:30</span></div>
                                         </a>
                                     </div>
                                 </li>
                                 <li>
-                                    <a class="nav-link text-center" href="javascript:void(0);"> <strong>Показать все сообщения</strong> <i class="fa fa-angle-right"></i> </a>
+                                    <a class="nav-link text-center" href="javascript:void(0);"> <strong>Показать все
+                                            сообщения</strong> <i class="fa fa-angle-right"></i> </a>
                                 </li>
                             </ul>
                         </div>
@@ -152,18 +164,26 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
                     <!-- Profile -->
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown u-pro">
-                        <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="" /> <span class="hidden-md-down"><?=$_SESSION['username']?> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href=""
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
+                                    src="assets/images/users/1.jpg" alt="user" class=""/> <span
+                                    class="hidden-md-down"><?= $_SESSION['username'] ?> &nbsp;<i
+                                        class="fa fa-angle-down"></i></span> </a>
                         <div class="dropdown-menu dropdown-menu-right animated flipInY">
                             <ul class="dropdown-user">
                                 <li>
                                     <div class="dw-user-box">
                                         <div class="u-img"><img src="assets/images/users/1.jpg" alt="user"></div>
                                         <div class="u-text">
-                                            <h4><?=$_SESSION['username']?></h4>
-                                            <p class="text-muted"><?=$_SESSION['access']?></p></div>
+                                            <h4><?= $_SESSION['username'] ?></h4>
+                                            <p class="text-muted"><?= $_SESSION['access'] ?></p></div>
                                     </div>
                                 </li>
-                                <li><button class="btn btn-block btn-outline-info" onclick="fastLogout()"><i class="fa fa-power-off"></i> Выйти</button></li>
+                                <li>
+                                    <button class="btn btn-block btn-outline-info" onclick="fastLogout()"><i
+                                                class="fa fa-power-off"></i> Выйти
+                                    </button>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -183,10 +203,9 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
             <!-- Sidebar navigation-->
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
-                    <li> <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="icon-Car-Wheel"></i><span class="hide-menu">Главная <span class="label label-rounded label-info">{info}</span></span></a></li>
-                </ul>
-                <ul id="sidebarnav">
-                    <li> <a class="has-arrow waves-effect waves-dark" href="searchBook.php" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu">Поиск книг</span></a></li>
+                    <li><a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i
+                                    class="icon-Car-Wheel"></i><span class="hide-menu">Главная <span
+                                        class="label label-rounded label-info">{info}</span></span></a></li>
                 </ul>
             </nav>
             <!-- End Sidebar navigation -->
@@ -216,7 +235,9 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
                     </ol>
                 </div>
                 <div class="col-md-7 align-self-center text-right d-none d-md-block">
-                    <button type="button" class="btn btn-info"><i class="fa fa-plus-circle"></i> Создать библиотечную справку</button>
+                    <button type="button" class="btn btn-info"><i class="fa fa-plus-circle"></i> Создать библиотечную
+                        справку
+                    </button>
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -227,6 +248,108 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
             <!-- ============================================================== -->
             <div class="row">
                 <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-info">
+                            <h4 class="m-b-0 text-white">Форма поиска книг</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="searchBookResult.php" method="POST">
+                                <div class="form-body">
+                                    <h3 class="card-title">Введите необходимые параметры поиска</h3>
+                                    <hr>
+                                    <div class="row p-t-20">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Автор книги</label>
+                                                <input type="text" id="bootAuthor" name="bookAuthor"
+                                                       class="form-control" placeholder="Петров">
+                                                <small class="form-control-feedback">Это человек написавший книгу
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Заглавие</label>
+                                                <input type="text" id="bootTitle" name="bookTitle" class="form-control"
+                                                       placeholder="Математика">
+                                                <small class="form-control-feedback">Это название книги</small>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <!--/row-->
+                                    <div class="row">
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Ключевые слова</label>
+                                                <input type="text" id="bootKeyWord" name="bootKeyWord"
+                                                       class="form-control"
+                                                       placeholder="Математическая статистика">
+                                                <small class="form-control-feedback">Уточнаяющие слова для поиска
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Ограничение количества поиска</label>
+                                                <select class="form-control custom-select" id="bootLimit" name="bootLimit"
+                                                        type="text" required>
+                                                    <option value="10">10</option>
+                                                    <option value="20">20</option>
+                                                    <option value="30">30</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                    <option value="200">200</option>
+                                                    <option value="300">300</option>
+                                                    <option value="500">500</option>
+                                                    <option value="1000">1000. Вы реально можете дойти до конца?
+                                                    </option>
+                                                    <option value="5000">5000. Вы уверены что вам действительно нужна
+                                                        эта книга?
+                                                    </option>
+                                                </select>
+                                                <small class="form-control-feedback"> От этого параметра будет зависеть
+                                                    скорость загрузки результатов.
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <!--/row-->
+                                    <h3 class="box-title m-t-40">Место поиска</h3>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-12 ">
+                                            <div class="form-group">
+                                                <label class="control-label">База данных поиска</label>
+                                                <select class="form-control custom-select" id="DataBase" name="DataBase"
+                                                        type="text" required>
+                                                    <option value="FOND">Библиотечный фонд</option>
+                                                    <option value="ZNANIUM">База данных "Знаниум"</option>
+                                                    <option value="URAIT">База данных "Юрайт"</option>
+                                                    <option value="LAN">База данных "Лань"</option>
+                                                    <option value="IBIS">Локальная база</option>
+                                                </select>
+                                                <small class="form-control-feedback"> Выберите базу данных, в которой
+                                                    будет выполняться поиск.
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" name="submit" class="btn btn-primary"><i
+                                                class="fa fa-check"></i>Поиск
+                                    </button>
+                                    <button type="reset" class="btn btn-inverse">Сброс</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                     <div class="card">
                         <div class="card-body">
                             Это текст стартовой страницы.
@@ -246,7 +369,7 @@ if (!isset($_SESSION['access'])) header('Location: login.php');
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer">
-            © <?=date("Y")?> Denis Shilenkov for VKR
+            © <?= date("Y") ?> Denis Shilenkov for VKR
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->
